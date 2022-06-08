@@ -1,6 +1,7 @@
 # Online ScrapBox to Re:VIEW Converter
 
 This tiny web app converts [scrapbox](http://scrapbox.io) format to [Re:VIEW](https://github.com/kmuto/review) format.
+Uses [fabon-f/sb2re](https://github.com/fabon-f/sb2re) as converter.
 
 ## Development
 - install [deno](https://deno.land/)
