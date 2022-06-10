@@ -25,7 +25,7 @@ function App() {
           <textarea value={watchInput} class="input" {...register("input")}></textarea>
         </div>
         <div class="editor_wrapper">
-          <textarea value={scrapboxToReView(watchInput.trim())} class="output"></textarea>
+          <textarea value={scrapboxToReView(watchInput)} class="output"></textarea>
         </div>
       </div>
     </div>
