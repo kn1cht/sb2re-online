@@ -21,11 +21,15 @@ function App() {
     <div id="app">
       <ReactNotifications />
       <div class="nav">
-        <h1 class="navitems">sb2re-online: Online Scrapbox to Re:VIEW Converter</h1>
-        <p class="navitems" id="baseheadinglevel">
+        <h1>sb2re-online: Online Scrapbox to Re:VIEW Converter</h1>
+        <p id="baseheadinglevel">
           <label for="baseheadinglevel">Base heading level (treated as a section): </label>
           <input type="number" min="1" defaultValue={watchBaseLevel} {...register("baselevel")} />
         </p>
+        <a href="https://github.com/kn1cht/sb2re-online" target="_blank" rel="noopener noreferrer">
+          <img src="https://icongr.am/fontawesome/github.svg?size=24&color=ffffff"></img>
+          <span>sb2re-online</span>
+        </a>
       </div>
       <div class="editor">
         <div class="editor_wrapper">

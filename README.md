@@ -4,6 +4,8 @@
 
 This tiny web app converts [Scrapbox](http://scrapbox.io) format to [Re:VIEW](https://github.com/kmuto/review) format.
 
+![app sample image](sample.png)
+
 ## Usage
 Paste your Scrapbox text to the left area.
 
