@@ -20,6 +20,8 @@ Paste your Scrapbox text to the left area.
 
 Scrapbox to Re:VIEW converter: [fabon-f/sb2re](https://github.com/fabon-f/sb2re)
 
+[MIT License Copyright (c) 2021 fabon](https://github.com/fabon-f/sb2re/blob/master/LICENSE)
+
 This app's design is based on [md2sb-online by hashrock](https://github.com/hashrock/md2sb-online).
 
 [MIT License Copyright (c) 2022 hashrock](https://github.com/hashrock/md2sb-online/blob/master/LICENSE)
