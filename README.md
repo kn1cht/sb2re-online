@@ -2,8 +2,13 @@
 
 **[kn1cht.github.io/sb2re-online/](https://kn1cht.github.io/sb2re-online/)**
 
-This tiny web app converts [scrapbox](http://scrapbox.io) format to [Re:VIEW](https://github.com/kmuto/review) format.
-Uses [fabon-f/sb2re](https://github.com/fabon-f/sb2re) as converter.
+This tiny web app converts [Scrapbox](http://scrapbox.io) format to [Re:VIEW](https://github.com/kmuto/review) format.
+
+## Usage
+Paste your Scrapbox text to the left area.
+
+### Options
+- Base heading level (treated as a section): Specify the largest heading level (Default: 3. This means `[*** ]` corresponds to Re:VIEW's `==`)
 
 ## Development
 - install [deno](https://deno.land/)
@@ -12,6 +17,8 @@ Uses [fabon-f/sb2re](https://github.com/fabon-f/sb2re) as converter.
 
 ## LICENSE
 [MIT License Copyright (c) 2022 kn1cht](./LICENSE)
+
+Scrapbox to Re:VIEW converter: [fabon-f/sb2re](https://github.com/fabon-f/sb2re)
 
 This app's design is based on [md2sb-online by hashrock](https://github.com/hashrock/md2sb-online).
 

@@ -4,7 +4,7 @@ html, body {
 }
 
 h1 {
-  margin: 0 10px;
+  margin: 0;
   padding: 0;
   font-size: 1.2rem;
 }
@@ -27,11 +27,29 @@ textarea {
 }
 
 .nav {
-  height: 3rem;
+  min-height: 3rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  padding: 5px;
   background: #299266;
   color: white;
+
+  .navitems {
+    flex: 1;
+  }
+  h1 {
+    min-inline-size: 550px;
+  }
+  p {
+    margin : 0;
+    margin-inline-start: 2rem;
+    min-inline-size: 450px;
+
+    input {
+      width: 4rem;
+    }
+  }
 }
 
 .editor {

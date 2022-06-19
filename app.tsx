@@ -14,18 +14,23 @@ const sampleTxt = `サンプル
 
 function App() {
   const { register, watch } = useForm();
-  const watchInput = watch("input", sampleTxt);
+  const watchText = watch("text", sampleTxt);
+  const watchBaseLevel = Number(watch("baselevel", 3));
   return (
     <div id="app">
       <div class="nav">
-        <h1>sb2re-online: Online Scrapbox to Re:VIEW Converter</h1>
+        <h1 class="navitems">sb2re-online: Online Scrapbox to Re:VIEW Converter</h1>
+        <p class="navitems" id="baseheadinglevel">
+          <label for="baseheadinglevel">Base heading level (treated as a section): </label>
+          <input type="number" min="1" defaultValue={watchBaseLevel} {...register("baselevel")} />
+        </p>
       </div>
       <div class="editor">
         <div class="editor_wrapper">
-          <textarea value={watchInput} class="input" {...register("input")}></textarea>
+          <textarea value={watchText} {...register("text")} class="input"></textarea>
         </div>
         <div class="editor_wrapper">
-          <textarea value={scrapboxToReView(watchInput)} class="output"></textarea>
+          <textarea value={scrapboxToReView(watchText, { baseHeadingLevel: watchBaseLevel })} class="output"></textarea>
         </div>
       </div>
     </div>
