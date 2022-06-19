@@ -25,12 +25,11 @@ textarea {
   min-height: 3rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
   padding: 5px;
   background: #299266;
   color: white; }
-  .nav .navitems {
-    flex: 1; }
   .nav h1 {
     min-inline-size: 550px; }
   .nav p {
@@ -39,6 +38,14 @@ textarea {
     min-inline-size: 450px; }
     .nav p input {
       width: 4rem; }
+  .nav a {
+    color: white;
+    margin-left: auto; }
+    .nav a img {
+      margin: 0 4px 2px 2px;
+      vertical-align: middle; }
+    .nav a span {
+      vertical-align: middle; }
 
 .editor {
   flex: 1;

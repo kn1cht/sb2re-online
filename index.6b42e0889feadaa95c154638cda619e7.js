@@ -9809,13 +9809,15 @@ ${n.nodes[0].raw}
         }
         if (n.type === "line" && n.nodes.length === 1 && n.nodes[0].type === "decoration" && n.nodes[0].rawDecos != "*" && /^\*+$/.test(n.nodes[0].rawDecos)) {
           const boldNode = n.nodes[0];
-          const header = "=".repeat(baseHeadingLevel + 2 - boldNode.rawDecos.length);
-          if (boldNode.nodes[0].type !== "plain") {
-            throw new Error("inside header");
+          if (boldNode.rawDecos.length <= baseHeadingLevel) {
+            const header = "=".repeat(baseHeadingLevel + 2 - boldNode.rawDecos.length);
+            if (boldNode.nodes[0].type !== "plain") {
+              throw new Error("inside header");
+            }
+            out += `${header} ${boldNode.nodes[0].text}`;
+            out += "\n\n";
+            continue;
           }
-          out += `${header} ${boldNode.nodes[0].text}`;
-          out += "\n\n";
-          continue;
         }
         if (n.type === "line" && n.nodes.length === 1 && n.nodes[0].type === "image") {
           out += `//indepimage[${escapeBlockCommandOption(n.nodes[0].src)}]
@@ -9923,10 +9925,7 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
       id: "app"
     }, /* @__PURE__ */ react_default.createElement(ReactNotifications, null), /* @__PURE__ */ react_default.createElement("div", {
       class: "nav"
-    }, /* @__PURE__ */ react_default.createElement("h1", {
-      class: "navitems"
-    }, "sb2re-online: Online Scrapbox to Re:VIEW Converter"), /* @__PURE__ */ react_default.createElement("p", {
-      class: "navitems",
+    }, /* @__PURE__ */ react_default.createElement("h1", null, "sb2re-online: Online Scrapbox to Re:VIEW Converter"), /* @__PURE__ */ react_default.createElement("p", {
       id: "baseheadinglevel"
     }, /* @__PURE__ */ react_default.createElement("label", {
       for: "baseheadinglevel"
@@ -9935,7 +9934,13 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
       min: "1",
       defaultValue: watchBaseLevel,
       ...register("baselevel")
-    }))), /* @__PURE__ */ react_default.createElement("div", {
+    })), /* @__PURE__ */ react_default.createElement("a", {
+      href: "https://github.com/kn1cht/sb2re-online",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, /* @__PURE__ */ react_default.createElement("img", {
+      src: "https://icongr.am/fontawesome/github.svg?size=24&color=ffffff"
+    }), /* @__PURE__ */ react_default.createElement("span", null, "sb2re-online"))), /* @__PURE__ */ react_default.createElement("div", {
       class: "editor"
     }, /* @__PURE__ */ react_default.createElement("div", {
       class: "editor_wrapper"
