@@ -7085,6 +7085,546 @@
   var unstable_renderSubtreeIntoContainer$1 = reactDom.unstable_renderSubtreeIntoContainer;
   var version$1 = reactDom.version;
 
+  // deno:https://cdn.skypack.dev/-/react-notifications-component@v4.0.1-4YWuYRqSw0l2aaeZKHaW/dist=es2019,mode=imports/optimized/react-notifications-component.js
+  var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+  function createCommonjsModule4(fn, basedir, module) {
+    return module = {
+      path: basedir,
+      exports: {},
+      require: function(path, base) {
+        return commonjsRequire4(path, base === void 0 || base === null ? module.path : base);
+      }
+    }, fn(module, module.exports), module.exports;
+  }
+  function commonjsRequire4() {
+    throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs");
+  }
+  var dist = createCommonjsModule4(function(module, exports) {
+    !function(t, n) {
+      module.exports = n(react_default);
+    }(commonjsGlobal, function(t) {
+      return (() => {
+        var n = { 359: (n2) => {
+          n2.exports = t;
+        } }, e = {};
+        function i(t2) {
+          var o2 = e[t2];
+          if (o2 !== void 0)
+            return o2.exports;
+          var r = e[t2] = { exports: {} };
+          return n[t2](r, r.exports, i), r.exports;
+        }
+        i.n = (t2) => {
+          var n2 = t2 && t2.__esModule ? () => t2.default : () => t2;
+          return i.d(n2, { a: n2 }), n2;
+        }, i.d = (t2, n2) => {
+          for (var e2 in n2)
+            i.o(n2, e2) && !i.o(t2, e2) && Object.defineProperty(t2, e2, { enumerable: true, get: n2[e2] });
+        }, i.o = (t2, n2) => Object.prototype.hasOwnProperty.call(t2, n2), i.r = (t2) => {
+          typeof Symbol != "undefined" && Symbol.toStringTag && Object.defineProperty(t2, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t2, "__esModule", { value: true });
+        };
+        var o = {};
+        return (() => {
+          i.r(o), i.d(o, { ReactNotifications: () => D2, Store: () => k2 });
+          var t2, n2, e2, r, a2 = i(359), c = i.n(a2), s2 = true, u = 768, f = 325, l = "rnc__notification-item";
+          !function(t3) {
+            t3.BOTTOM_LEFT = "bottom-left", t3.BOTTOM_RIGHT = "bottom-right", t3.BOTTOM_CENTER = "bottom-center", t3.TOP_LEFT = "top-left", t3.TOP_RIGHT = "top-right", t3.TOP_CENTER = "top-center", t3.CENTER = "center", t3.TOP_FULL = "top-full", t3.BOTTOM_FULL = "bottom-full";
+          }(t2 || (t2 = {})), function(t3) {
+            t3.TOP = "top", t3.BOTTOM = "bottom";
+          }(n2 || (n2 = {})), function(t3) {
+            t3.SUCCESS = "success", t3.DANGER = "danger", t3.INFO = "info", t3.DEFAULT = "default", t3.WARNING = "warning";
+          }(e2 || (e2 = {})), function(t3) {
+            t3.TIMEOUT = "timeout", t3.CLICK = "click", t3.TOUCH = "touch", t3.MANUAL = "manual";
+          }(r || (r = {}));
+          var d2 = function(t3) {
+            return t3 == null;
+          };
+          function m(n3) {
+            return n3 === t2.BOTTOM_FULL || n3 === t2.BOTTOM_LEFT || n3 === t2.BOTTOM_RIGHT || n3 === t2.BOTTOM_CENTER;
+          }
+          function p(n3) {
+            return n3 === t2.TOP_FULL || n3 === t2.TOP_LEFT || n3 === t2.TOP_RIGHT || n3 === t2.TOP_CENTER;
+          }
+          function h2(t3) {
+            var n3 = t3.type, i2 = t3.content, o2 = t3.userDefinedTypes, r2 = [l];
+            if (i2)
+              return r2;
+            if (d2(o2))
+              return function(t4) {
+                switch (t4) {
+                  case e2.DEFAULT:
+                    return [l, "rnc__notification-item--default"];
+                  case e2.SUCCESS:
+                    return [l, "rnc__notification-item--success"];
+                  case e2.DANGER:
+                    return [l, "rnc__notification-item--danger"];
+                  case e2.WARNING:
+                    return [l, "rnc__notification-item--warning"];
+                  case e2.INFO:
+                    return [l, "rnc__notification-item--info"];
+                  default:
+                    return [l];
+                }
+              }(n3);
+            var a22 = o2.find(function(t4) {
+              return t4.name === n3;
+            });
+            return r2.concat(a22.htmlClasses);
+          }
+          function y3(t3, n3) {
+            var e3 = t3.duration, i2 = t3.timingFunction, o2 = t3.delay;
+            return "".concat(e3, "ms ").concat(n3, " ").concat(i2, " ").concat(o2, "ms");
+          }
+          function v2(t3) {
+            return t3 ? (0 | 16 * Math.random()).toString(16) : "100000000000100000000000".replace(/1|0/g, v2);
+          }
+          function b2(t3, n3) {
+            var e3 = n3.duration, i2 = n3.timingFunction, o2 = n3.delay, r2 = t3 || {};
+            return d2(r2.duration) && (r2.duration = e3), d2(r2.timingFunction) && (r2.timingFunction = i2), d2(r2.delay) && (r2.delay = o2), r2;
+          }
+          function E2(t3, n3, i2) {
+            var o2 = t3, r2 = o2.id, a22 = o2.type, c2 = o2.insert, s22 = o2.content, u2 = o2.container, f2 = o2.animationIn, l2 = o2.animationOut, m2 = o2.slidingEnter, p2 = o2.slidingExit, h22 = o2.touchRevert, y22 = o2.touchSlidingExit, E22 = o2.dismiss, g2 = o2.width, O22 = o2.onRemoval;
+            o2.id = r2 || v2(), o2.type = s22 ? null : a22.toLowerCase(), n3 && !s22 && (o2.userDefinedTypes = function(t4, n4) {
+              var i3 = t4.content, o3 = t4.type;
+              if (!i3 && o3 !== e2.SUCCESS && o3 !== e2.DANGER && o3 !== e2.INFO && o3 !== e2.DEFAULT && o3 !== e2.WARNING && n4)
+                return n4;
+            }(o2, n3)), o2.width = d2(g2) ? i2 : g2, o2.container = u2.toLowerCase(), o2.insert = (c2 || "top").toLowerCase(), o2.dismiss = function(t4) {
+              var n4 = t4, e3 = { duration: 0, click: true, touch: true, onScreen: false, pauseOnHover: false, waitForAnimation: false, showIcon: false };
+              return n4 ? (Object.keys(e3).forEach(function(t5) {
+                d2(n4[t5]) && (n4[t5] = e3[t5]);
+              }), n4) : e3;
+            }(E22), o2.animationIn = f2 || [], o2.animationOut = l2 || [], o2.onRemoval = O22 || function() {
+            };
+            var T22 = function(t4, n4, e3) {
+              return { duration: t4, timingFunction: n4, delay: e3 };
+            };
+            o2.slidingEnter = b2(m2, T22(600, "linear", 0)), o2.slidingExit = b2(p2, T22(600, "linear", 0)), o2.touchRevert = b2(h22, T22(600, "linear", 0));
+            var _22 = y22 || {}, S22 = _22.swipe || {}, N22 = _22.fade || {};
+            return o2.touchSlidingExit = _22, o2.touchSlidingExit.swipe = b2(S22, T22(600, "linear", 0)), o2.touchSlidingExit.fade = b2(N22, T22(300, "linear", 0)), o2;
+          }
+          function g(t3, n3) {
+            for (var e3 = 0; e3 < n3.length; e3++) {
+              var i2 = n3[e3];
+              i2.enumerable = i2.enumerable || false, i2.configurable = true, "value" in i2 && (i2.writable = true), Object.defineProperty(t3, i2.key, i2);
+            }
+          }
+          var O3 = function() {
+            function t3(n4, e4) {
+              !function(t4, n5) {
+                if (!(t4 instanceof n5))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t3), this.callback = n4, this.remaining = e4, this.resume();
+            }
+            var n3, e3;
+            return n3 = t3, (e3 = [{ key: "pause", value: function() {
+              clearTimeout(this.timerId), this.remaining -= Date.now() - this.start;
+            } }, { key: "resume", value: function() {
+              this.start = Date.now(), clearTimeout(this.timerId), this.timerId = setTimeout(this.callback, this.remaining);
+            } }, { key: "clear", value: function() {
+              clearTimeout(this.timerId);
+            } }]) && g(n3.prototype, e3), Object.defineProperty(n3, "prototype", { writable: false }), t3;
+          }();
+          function T3(t3) {
+            return T3 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t4) {
+              return typeof t4;
+            } : function(t4) {
+              return t4 && typeof Symbol == "function" && t4.constructor === Symbol && t4 !== Symbol.prototype ? "symbol" : typeof t4;
+            }, T3(t3);
+          }
+          function _2(t3) {
+            return function(t4) {
+              if (Array.isArray(t4))
+                return S3(t4);
+            }(t3) || function(t4) {
+              if (typeof Symbol != "undefined" && t4[Symbol.iterator] != null || t4["@@iterator"] != null)
+                return Array.from(t4);
+            }(t3) || function(t4, n3) {
+              if (!t4)
+                return;
+              if (typeof t4 == "string")
+                return S3(t4, n3);
+              var e3 = Object.prototype.toString.call(t4).slice(8, -1);
+              e3 === "Object" && t4.constructor && (e3 = t4.constructor.name);
+              if (e3 === "Map" || e3 === "Set")
+                return Array.from(t4);
+              if (e3 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e3))
+                return S3(t4, n3);
+            }(t3) || function() {
+              throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+            }();
+          }
+          function S3(t3, n3) {
+            (n3 == null || n3 > t3.length) && (n3 = t3.length);
+            for (var e3 = 0, i2 = new Array(n3); e3 < n3; e3++)
+              i2[e3] = t3[e3];
+            return i2;
+          }
+          function N2(t3, n3) {
+            for (var e3 = 0; e3 < n3.length; e3++) {
+              var i2 = n3[e3];
+              i2.enumerable = i2.enumerable || false, i2.configurable = true, "value" in i2 && (i2.writable = true), Object.defineProperty(t3, i2.key, i2);
+            }
+          }
+          function w2(t3, n3) {
+            return w2 = Object.setPrototypeOf || function(t4, n4) {
+              return t4.__proto__ = n4, t4;
+            }, w2(t3, n3);
+          }
+          function R3(t3) {
+            var n3 = function() {
+              if (typeof Reflect == "undefined" || !Reflect.construct)
+                return false;
+              if (Reflect.construct.sham)
+                return false;
+              if (typeof Proxy == "function")
+                return true;
+              try {
+                return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+                })), true;
+              } catch (t4) {
+                return false;
+              }
+            }();
+            return function() {
+              var e3, i2 = j2(t3);
+              if (n3) {
+                var o2 = j2(this).constructor;
+                e3 = Reflect.construct(i2, arguments, o2);
+              } else
+                e3 = i2.apply(this, arguments);
+              return C2(this, e3);
+            };
+          }
+          function C2(t3, n3) {
+            if (n3 && (T3(n3) === "object" || typeof n3 == "function"))
+              return n3;
+            if (n3 !== void 0)
+              throw new TypeError("Derived constructors may only return object or undefined");
+            return function(t4) {
+              if (t4 === void 0)
+                throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+              return t4;
+            }(t3);
+          }
+          function j2(t3) {
+            return j2 = Object.setPrototypeOf ? Object.getPrototypeOf : function(t4) {
+              return t4.__proto__ || Object.getPrototypeOf(t4);
+            }, j2(t3);
+          }
+          var M3 = function(e3) {
+            !function(t3, n3) {
+              if (typeof n3 != "function" && n3 !== null)
+                throw new TypeError("Super expression must either be null or a function");
+              t3.prototype = Object.create(n3 && n3.prototype, { constructor: { value: t3, writable: true, configurable: true } }), Object.defineProperty(t3, "prototype", { writable: false }), n3 && w2(t3, n3);
+            }(u2, e3);
+            var i2, o2, s22 = R3(u2);
+            function u2(t3) {
+              var n3;
+              !function(t4, n4) {
+                if (!(t4 instanceof n4))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, u2), (n3 = s22.call(this, t3)).onClick = function() {
+                var t4 = n3.props.notification.dismiss;
+                (t4.click || t4.showIcon) && n3.removeNotification(r.CLICK);
+              }, n3.onTouchStart = function(t4) {
+                var e5 = t4.touches[0].pageX;
+                n3.setState(function(t5) {
+                  var n4 = t5.parentStyle;
+                  return { startX: e5, currentX: e5, parentStyle: Object.assign(Object.assign({}, n4), { position: "relative" }) };
+                });
+              }, n3.onTouchMove = function(t4) {
+                var e5 = t4.touches[0].pageX, i4 = n3.state.startX, o4 = n3.props, a3 = o4.toggleRemoval, c2 = o4.notification, s3 = c2.id, u3 = c2.onRemoval, f2 = c2.slidingExit, l2 = c2.touchSlidingExit, d22 = l2.swipe, m2 = l2.fade, p2 = e5 - i4, h22 = n3.rootElementRef.current.offsetWidth, v22 = window.innerWidth + h22, b22 = "".concat(e5 - i4 >= 0 ? v22 : -v22, "px");
+                if (function(t5, n4) {
+                  return Math.abs(t5) >= 0.4 * n4;
+                }(p2, h22)) {
+                  var E22 = y3(d22, "left"), g2 = y3(m2, "opacity"), O22 = function() {
+                    a3(s3, function() {
+                      return u3(s3, r.TOUCH);
+                    });
+                  };
+                  return n3.setState(function(t5) {
+                    var e6 = t5.parentStyle;
+                    return { touchEnabled: false, parentStyle: Object.assign(Object.assign({}, e6), { left: b22, opacity: 0, transition: "".concat(E22, ", ").concat(g2) }), onTransitionEnd: function() {
+                      n3.setState(function(t6) {
+                        var n4 = t6.parentStyle;
+                        return { parentStyle: Object.assign(Object.assign({}, n4), { height: "0px", overflow: "hidden", transition: y3(f2, "height") }), onTransitionEnd: O22 };
+                      });
+                    } };
+                  });
+                }
+                return n3.setState(function(t5) {
+                  var n4 = t5.parentStyle;
+                  return { currentX: e5, parentStyle: Object.assign(Object.assign({}, n4), { left: "".concat(0 + p2, "px") }) };
+                });
+              }, n3.onTouchEnd = function() {
+                var t4 = n3.props.notification.touchRevert;
+                n3.setState(function(n4) {
+                  var e5 = n4.parentStyle;
+                  return { parentStyle: Object.assign(Object.assign({}, e5), { left: 0, transition: y3(t4, "left") }) };
+                });
+              }, n3.onMouseEnter = function() {
+                n3.timer ? n3.timer.pause() : n3.setState({ animationPlayState: "paused" });
+              }, n3.onMouseLeave = function() {
+                n3.timer ? n3.timer.resume() : n3.setState({ animationPlayState: "running" });
+              }, n3.rootElementRef = c().createRef();
+              var e4 = t3.defaultNotificationWidth, i3 = t3.notification, o3 = t3.isMobile, a22 = i3.width;
+              return n3.state = { parentStyle: { height: "0px", overflow: "hidden", width: "".concat(a22 || e4, "px") }, htmlClassList: h2(i3), animationPlayState: "running", touchEnabled: true }, o3 && (n3.state.parentStyle.width = "100%"), n3;
+            }
+            return i2 = u2, (o2 = [{ key: "componentWillUnmount", value: function() {
+              this.timer && this.timer.clear();
+            } }, { key: "componentDidMount", value: function() {
+              var e4 = this, i3 = this.props, o3 = i3.notification, a22 = i3.notificationsCount, c2 = o3.dismiss, s3 = c2.duration, u3 = c2.onScreen, f2 = function(e5, i4) {
+                return !(i4 <= 1) && i4 > 1 && (e5.insert === n2.TOP && p(e5.container) || e5.insert === n2.BOTTOM && m(e5.container) || e5.container === t2.CENTER);
+              }(o3, a22), l2 = this.rootElementRef.current.scrollHeight, d22 = function() {
+                !s3 || u3 || e4.timer || (e4.timer = new O3(function() {
+                  return e4.removeNotification(r.TIMEOUT);
+                }, s3));
+              };
+              this.setState(function(t3) {
+                return { parentStyle: { width: t3.parentStyle.width, height: "".concat(l2, "px"), transition: f2 ? y3(o3.slidingEnter, "height") : "10ms height" }, onTransitionEnd: d22 };
+              }, function() {
+                requestAnimationFrame(function() {
+                  e4.setState(function(t3) {
+                    return { htmlClassList: [].concat(_2(o3.animationIn), _2(t3.htmlClassList)) };
+                  });
+                });
+              });
+            } }, { key: "componentDidUpdate", value: function(t3) {
+              if (this.props.hasBeenRemoved && !t3.hasBeenRemoved && this.removeNotification(r.MANUAL), t3 !== this.props && !this.props.hasBeenRemoved) {
+                var n3 = this.props.notification.container, e4 = this.rootElementRef.current.children[0].scrollHeight;
+                this.setState(function(t4) {
+                  var i3 = t4.parentStyle;
+                  return { parentStyle: Object.assign(Object.assign({}, i3), { height: "".concat(e4 + (n3.endsWith("full") ? 0 : 15), "px") }) };
+                });
+              }
+            } }, { key: "removeNotification", value: function(t3) {
+              var n3 = this, e4 = this.props, i3 = e4.notification, o3 = e4.toggleRemoval, r2 = i3.id, a22 = i3.onRemoval, c2 = i3.dismiss.waitForAnimation, s3 = [].concat(_2(i3.animationOut), _2(h2(i3))), u3 = function() {
+                return o3(r2, function() {
+                  return a22(r2, t3);
+                });
+              }, f2 = { height: "0px", overflow: "hidden", transition: y3(i3.slidingExit, "height") };
+              return c2 ? this.setState(function(t4) {
+                var e5 = t4.parentStyle.width;
+                return { htmlClassList: s3, onAnimationEnd: function() {
+                  n3.setState({ parentStyle: Object.assign({ width: e5 }, f2), onTransitionEnd: u3 });
+                } };
+              }) : this.setState(function(t4) {
+                var n4 = t4.parentStyle.width;
+                return { parentStyle: Object.assign({ width: n4 }, f2), onTransitionEnd: u3, htmlClassList: s3 };
+              });
+            } }, { key: "renderTimer", value: function() {
+              var t3 = this, n3 = this.props.notification.dismiss, e4 = n3.duration, i3 = n3.onScreen, o3 = this.state.animationPlayState;
+              if (e4 && i3) {
+                var a22 = { animationName: "timer", animationDuration: "".concat(e4, "ms"), animationTimingFunction: "linear", animationFillMode: "forwards", animationDelay: "0", animationPlayState: o3 };
+                return c().createElement("div", { className: "rnc__notification-timer" }, c().createElement("div", { className: "rnc__notification-timer-filler", onAnimationEnd: function() {
+                  return t3.removeNotification(r.TIMEOUT);
+                }, style: a22 }));
+              }
+            } }, { key: "renderCustomContent", value: function() {
+              var t3 = this.state.htmlClassList, n3 = this.props.notification, e4 = n3.id, i3 = n3.content, o3 = n3.dismiss, r2 = o3.duration, a22 = o3.pauseOnHover, s3 = r2 > 0 && a22;
+              return c().createElement("div", { className: "".concat(_2(t3).join(" ")), onMouseEnter: s3 ? this.onMouseEnter : null, onMouseLeave: s3 ? this.onMouseLeave : null }, c().isValidElement(i3) ? i3 : c().createElement(i3, Object.assign({}, { id: e4, notificationConfig: Object.assign({}, this.props.notification) })));
+            } }, { key: "renderNotification", value: function() {
+              var t3 = this.props.notification, n3 = t3.title, e4 = t3.message, i3 = t3.dismiss, o3 = i3.showIcon, r2 = i3.duration, a22 = i3.pauseOnHover, s3 = this.state.htmlClassList, u3 = r2 > 0 && a22;
+              return c().createElement("div", { className: "".concat(_2(s3).join(" ")), onMouseEnter: u3 ? this.onMouseEnter : null, onMouseLeave: u3 ? this.onMouseLeave : null }, c().createElement("div", { className: "rnc__notification-content" }, o3 && c().createElement("div", { className: "rnc__notification-close-mark", onClick: this.onClick }), n3 && c().createElement("div", { className: "rnc__notification-title" }, n3), c().createElement("div", { className: "rnc__notification-message" }, e4), this.renderTimer()));
+            } }, { key: "render", value: function() {
+              var t3 = this.props.notification, n3 = t3.content, e4 = t3.dismiss.click, i3 = this.state, o3 = i3.parentStyle, r2 = i3.onAnimationEnd, a22 = i3.onTransitionEnd, s3 = i3.touchEnabled;
+              return c().createElement("div", { ref: this.rootElementRef, onClick: e4 ? this.onClick : null, style: o3, className: "rnc__notification", onAnimationEnd: r2, onTransitionEnd: a22, onTouchStart: s3 ? this.onTouchStart : null, onTouchMove: s3 ? this.onTouchMove : null, onTouchEnd: s3 ? this.onTouchEnd : null }, n3 ? this.renderCustomContent() : this.renderNotification());
+            } }]) && N2(i2.prototype, o2), Object.defineProperty(i2, "prototype", { writable: false }), u2;
+          }(c().Component);
+          function L2(t3, n3) {
+            for (var e3 = 0; e3 < n3.length; e3++) {
+              var i2 = n3[e3];
+              i2.enumerable = i2.enumerable || false, i2.configurable = true, "value" in i2 && (i2.writable = true), Object.defineProperty(t3, i2.key, i2);
+            }
+          }
+          const k2 = new (function() {
+            function t3() {
+              var n4 = this;
+              !function(t4, n5) {
+                if (!(t4 instanceof n5))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t3), this.incrementCounter = function() {
+                return n4.counter += 1;
+              }, this.getCounter = function() {
+                return n4.counter;
+              }, this.counter = 0, this.add = null;
+            }
+            var n3, e3;
+            return n3 = t3, (e3 = [{ key: "addNotification", value: function(t4) {
+              this.incrementCounter();
+              var n4 = E2(t4, this.types, this.defaultNotificationWidth);
+              return this.add(n4);
+            } }, { key: "register", value: function(t4) {
+              var n4 = t4.addNotification, e4 = t4.removeNotification, i2 = t4.removeAllNotifications, o2 = t4.types, r2 = t4.defaultNotificationWidth;
+              this.add = n4, this.removeNotification = e4, this.removeAllNotifications = i2, this.defaultNotificationWidth = r2, this.types = o2;
+            } }]) && L2(n3.prototype, e3), Object.defineProperty(n3, "prototype", { writable: false }), t3;
+          }())();
+          function P3(t3) {
+            return P3 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t4) {
+              return typeof t4;
+            } : function(t4) {
+              return t4 && typeof Symbol == "function" && t4.constructor === Symbol && t4 !== Symbol.prototype ? "symbol" : typeof t4;
+            }, P3(t3);
+          }
+          function A(t3) {
+            return function(t4) {
+              if (Array.isArray(t4))
+                return I3(t4);
+            }(t3) || function(t4) {
+              if (typeof Symbol != "undefined" && t4[Symbol.iterator] != null || t4["@@iterator"] != null)
+                return Array.from(t4);
+            }(t3) || function(t4, n3) {
+              if (!t4)
+                return;
+              if (typeof t4 == "string")
+                return I3(t4, n3);
+              var e3 = Object.prototype.toString.call(t4).slice(8, -1);
+              e3 === "Object" && t4.constructor && (e3 = t4.constructor.name);
+              if (e3 === "Map" || e3 === "Set")
+                return Array.from(t4);
+              if (e3 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e3))
+                return I3(t4, n3);
+            }(t3) || function() {
+              throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+            }();
+          }
+          function I3(t3, n3) {
+            (n3 == null || n3 > t3.length) && (n3 = t3.length);
+            for (var e3 = 0, i2 = new Array(n3); e3 < n3; e3++)
+              i2[e3] = t3[e3];
+            return i2;
+          }
+          function x2(t3, n3) {
+            for (var e3 = 0; e3 < n3.length; e3++) {
+              var i2 = n3[e3];
+              i2.enumerable = i2.enumerable || false, i2.configurable = true, "value" in i2 && (i2.writable = true), Object.defineProperty(t3, i2.key, i2);
+            }
+          }
+          function F3(t3, n3) {
+            return F3 = Object.setPrototypeOf || function(t4, n4) {
+              return t4.__proto__ = n4, t4;
+            }, F3(t3, n3);
+          }
+          function B3(t3) {
+            var n3 = function() {
+              if (typeof Reflect == "undefined" || !Reflect.construct)
+                return false;
+              if (Reflect.construct.sham)
+                return false;
+              if (typeof Proxy == "function")
+                return true;
+              try {
+                return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+                })), true;
+              } catch (t4) {
+                return false;
+              }
+            }();
+            return function() {
+              var e3, i2 = W3(t3);
+              if (n3) {
+                var o2 = W3(this).constructor;
+                e3 = Reflect.construct(i2, arguments, o2);
+              } else
+                e3 = i2.apply(this, arguments);
+              return U3(this, e3);
+            };
+          }
+          function U3(t3, n3) {
+            if (n3 && (P3(n3) === "object" || typeof n3 == "function"))
+              return n3;
+            if (n3 !== void 0)
+              throw new TypeError("Derived constructors may only return object or undefined");
+            return function(t4) {
+              if (t4 === void 0)
+                throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+              return t4;
+            }(t3);
+          }
+          function W3(t3) {
+            return W3 = Object.setPrototypeOf ? Object.getPrototypeOf : function(t4) {
+              return t4.__proto__ || Object.getPrototypeOf(t4);
+            }, W3(t3);
+          }
+          var D2 = function(n3) {
+            !function(t3, n4) {
+              if (typeof n4 != "function" && n4 !== null)
+                throw new TypeError("Super expression must either be null or a function");
+              t3.prototype = Object.create(n4 && n4.prototype, { constructor: { value: t3, writable: true, configurable: true } }), Object.defineProperty(t3, "prototype", { writable: false }), n4 && F3(t3, n4);
+            }(a22, n3);
+            var e3, i2, r2 = B3(a22);
+            function a22(t3) {
+              var n4;
+              return function(t4, n5) {
+                if (!(t4 instanceof n5))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, a22), (n4 = r2.call(this, t3)).handleResize = function() {
+                n4.setState({ windowWidth: window.innerWidth });
+              }, n4.add = function(t4) {
+                return n4.setState(function(n5) {
+                  var e4 = A(n5.notifications), i3 = e4.findIndex(function(n6) {
+                    return n6.id === t4.id;
+                  });
+                  return i3 > -1 ? (e4[i3] = t4, { notifications: e4 }) : { notifications: t4.insert === "top" ? [t4].concat(A(e4)) : [].concat(A(e4), [t4]) };
+                }), t4.id;
+              }, n4.remove = function(t4) {
+                n4.setState(function(n5) {
+                  return { notifications: n5.notifications.map(function(n6) {
+                    return n6.id === t4 && (n6.hasBeenRemoved = true), n6;
+                  }) };
+                });
+              }, n4.removeAllNotifications = function() {
+                n4.setState({ notifications: n4.state.notifications.map(function(t4) {
+                  return Object.assign(Object.assign({}, t4), { hasBeenRemoved: true });
+                }) });
+              }, n4.toggleRemoval = function(t4, e4) {
+                n4.setState(function(n5) {
+                  return { notifications: n5.notifications.filter(function(n6) {
+                    return n6.id !== t4;
+                  }) };
+                }, e4);
+              }, n4.state = { isMobile: d2(t3.isMobile) ? s2 : t3.isMobile, breakpoint: d2(t3.breakpoint) ? u : t3.breakpoint, notifications: [], windowWidth: void 0 }, n4;
+            }
+            return e3 = a22, (i2 = [{ key: "componentDidMount", value: function() {
+              var t3 = this.props, n4 = t3.types, e4 = t3.defaultNotificationWidth;
+              k2.register({ addNotification: this.add, removeNotification: this.remove, removeAllNotifications: this.removeAllNotifications, defaultNotificationWidth: e4 || f, types: n4 }), this.setState({ windowWidth: window.innerWidth }), window.addEventListener("resize", this.handleResize);
+            } }, { key: "componentWillUnmount", value: function() {
+              window.removeEventListener("resize", this.handleResize);
+            } }, { key: "renderNotifications", value: function(t3, n4) {
+              var e4 = this;
+              return t3.map(function(i3) {
+                return c().createElement(M3, { id: i3.id, key: i3.id, isMobile: n4, defaultNotificationWidth: e4.props.defaultNotificationWidth, notification: i3, toggleRemoval: e4.toggleRemoval, notificationsCount: t3.length, hasBeenRemoved: i3.hasBeenRemoved });
+              });
+            } }, { key: "renderMobileNotifications", value: function(n4) {
+              var e4 = n4.className, i3 = n4.id, o2 = function(n5) {
+                var e5 = [], i4 = [];
+                return n5.forEach(function(n6) {
+                  var o3 = n6.container, r4 = t2.CENTER;
+                  p(o3) || o3 === r4 ? e5.push(n6) : m(o3) && i4.push(n6);
+                }), { top: e5, bottom: i4 };
+              }(this.state.notifications), r3 = this.renderNotifications(o2.top, true), a3 = this.renderNotifications(o2.bottom, true);
+              return c().createElement("div", { id: i3, key: "mobile", className: "rnc__base ".concat(e4 || "") }, c().createElement("div", { className: "rnc__notification-container--mobile-top" }, r3), c().createElement("div", { className: "rnc__notification-container--mobile-bottom" }, a3));
+            } }, { key: "renderScreenNotifications", value: function(n4) {
+              var e4 = n4.className, i3 = n4.id, o2 = function(n5) {
+                var e5 = [], i4 = [], o3 = [], r4 = [], a4 = [], c2 = [], s3 = [], u3 = [], f3 = [];
+                return n5.forEach(function(n6) {
+                  var l3 = n6.container;
+                  l3 === t2.TOP_FULL ? u3.push(n6) : l3 === t2.BOTTOM_FULL ? f3.push(n6) : l3 === t2.TOP_LEFT ? e5.push(n6) : l3 === t2.TOP_RIGHT ? i4.push(n6) : l3 === t2.TOP_CENTER ? o3.push(n6) : l3 === t2.BOTTOM_LEFT ? r4.push(n6) : l3 === t2.BOTTOM_RIGHT ? a4.push(n6) : l3 === t2.BOTTOM_CENTER ? c2.push(n6) : l3 === t2.CENTER && s3.push(n6);
+                }), { topFull: u3, bottomFull: f3, topLeft: e5, topRight: i4, topCenter: o3, bottomLeft: r4, bottomRight: a4, bottomCenter: c2, center: s3 };
+              }(this.state.notifications), r3 = this.renderNotifications(o2.topFull, false), a3 = this.renderNotifications(o2.bottomFull, false), s22 = this.renderNotifications(o2.topLeft, false), u2 = this.renderNotifications(o2.topRight, false), f2 = this.renderNotifications(o2.topCenter, false), l2 = this.renderNotifications(o2.bottomLeft, false), d22 = this.renderNotifications(o2.bottomRight, false), m2 = this.renderNotifications(o2.bottomCenter, false), p2 = this.renderNotifications(o2.center, false);
+              return c().createElement("div", { id: i3, key: "screen", className: "rnc__base ".concat(e4 || "") }, c().createElement("div", { className: "rnc__notification-container--top-full" }, r3), c().createElement("div", { className: "rnc__notification-container--bottom-full" }, a3), c().createElement("div", { className: "rnc__notification-container--top-left" }, s22), c().createElement("div", { className: "rnc__notification-container--top-right" }, u2), c().createElement("div", { className: "rnc__notification-container--bottom-left" }, l2), c().createElement("div", { className: "rnc__notification-container--bottom-right" }, d22), c().createElement("div", { className: "rnc__notification-container--top-center" }, f2), c().createElement("div", { className: "rnc__notification-container--center" }, c().createElement("div", { className: "rnc__util--flex-center" }, p2)), c().createElement("div", { className: "rnc__notification-container--bottom-center" }, m2));
+            } }, { key: "render", value: function() {
+              var t3 = this.props.isMobile, n4 = this.state, e4 = n4.windowWidth, i3 = n4.breakpoint;
+              return t3 && e4 <= i3 ? this.renderMobileNotifications(this.props) : this.renderScreenNotifications(this.props);
+            } }]) && x2(e3.prototype, i2), Object.defineProperty(e3, "prototype", { writable: false }), a22;
+          }(c().Component);
+        })(), o;
+      })();
+    });
+  });
+  var ReactNotifications = dist.ReactNotifications;
+  var Store = dist.Store;
+
   // deno:https://cdn.skypack.dev/-/react-hook-form@v7.32.2-C2MIHoyzmYzKeu12K8Tb/dist=es2019,mode=imports/optimized/react-hook-form.js
   var isCheckBoxInput = (element) => element.type === "checkbox";
   var isDateObject = (value) => value instanceof Date;
@@ -9381,7 +9921,7 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
     const watchBaseLevel = Number(watch("baselevel", 3));
     return /* @__PURE__ */ react_default.createElement("div", {
       id: "app"
-    }, /* @__PURE__ */ react_default.createElement("div", {
+    }, /* @__PURE__ */ react_default.createElement(ReactNotifications, null), /* @__PURE__ */ react_default.createElement("div", {
       class: "nav"
     }, /* @__PURE__ */ react_default.createElement("h1", {
       class: "navitems"
@@ -9406,9 +9946,28 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
     })), /* @__PURE__ */ react_default.createElement("div", {
       class: "editor_wrapper"
     }, /* @__PURE__ */ react_default.createElement("textarea", {
-      value: scrapboxToReView(watchText, { baseHeadingLevel: watchBaseLevel }),
+      value: executeSb2re(watchText, { baseHeadingLevel: watchBaseLevel }),
       class: "output"
     }))));
+  }
+  function executeSb2re(watchText, option) {
+    let converted = "";
+    try {
+      converted = scrapboxToReView(watchText, option);
+    } catch (e) {
+      Store.addNotification({
+        title: "Error from sb2re: Please fix your Scrapbox syntax",
+        message: e.toString(),
+        type: "danger",
+        container: "bottom-left",
+        dismiss: {
+          duration: 6e3,
+          onScreen: true,
+          showIcon: true
+        }
+      });
+    }
+    return converted;
   }
   addEventListener("DOMContentLoaded", () => react_dom_default.render(/* @__PURE__ */ react_default.createElement(App, null), document.querySelector("#main")));
 })();
