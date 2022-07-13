@@ -12,6 +12,14 @@ const sampleTxt = `サンプル
  \`sb2re\`を使用しています
   [fabon-f/sb2re https://github.com/fabon-f/sb2re]
 `;
+const logger = {
+  error(message: string) {
+    throw new Error(message);
+  },
+  warn(message: string) {
+    console.warn(message);
+  }
+};
 
 function App() {
   const { register, watch } = useForm();
@@ -36,7 +44,7 @@ function App() {
           <textarea value={watchText} {...register("text")} class="input"></textarea>
         </div>
         <div class="editor_wrapper">
-          <textarea value={executeSb2re(watchText, { baseHeadingLevel: watchBaseLevel })} class="output"></textarea>
+          <textarea value={executeSb2re(watchText, { baseHeadingLevel: watchBaseLevel, logger })} class="output"></textarea>
         </div>
       </div>
     </div>
@@ -49,7 +57,7 @@ function executeSb2re(watchText: string, option: {}) {
     converted = scrapboxToReView(watchText, option);
   } catch(e) {
     Store.addNotification({
-      title: "Error from sb2re: Please fix your Scrapbox syntax",
+      title: "Please fix your Scrapbox syntax",
       message: e.toString(),
       type: "danger",
       container: "bottom-left",
