@@ -9743,7 +9743,7 @@
   // deno:https://raw.githubusercontent.com/fabon-f/sb2re/master/mod.ts
   function generateReView(ast, option = {}) {
     const baseHeadingLevel = option.baseHeadingLevel || 3;
-    const logger = option.logger || {
+    const logger2 = option.logger || {
       error(message) {
         console.error(message);
       },
@@ -9774,7 +9774,7 @@
             state.inBlockQuote = true;
             out += "//quote{\n";
           }
-          out += `${n.nodes[0].nodes.map((n2) => nodeToReView(n2, logger)).join("")}
+          out += `${n.nodes[0].nodes.map((n2) => nodeToReView(n2, logger2)).join("")}
 `;
           continue;
         }
@@ -9783,16 +9783,16 @@
             state.inItemization = true;
           }
           if (n.type === "line") {
-            const lineContent = n.nodes.map((n2) => nodeToReView(n2, logger)).join("");
+            const lineContent = n.nodes.map((n2) => nodeToReView(n2, logger2)).join("");
             out += ` ${"*".repeat(n.indent)} ${lineContent}
 `;
             continue;
           } else {
             if (n.type === "table") {
-              logger.error(`Table inside itemization not supported: ${n.fileName}`);
+              logger2.error(`Table inside itemization not supported: ${n.fileName}`);
             }
             if (n.type === "codeBlock") {
-              logger.error(`Code block inside itemization not supported: ${n.fileName}`);
+              logger2.error(`Code block inside itemization not supported: ${n.fileName}`);
             }
             out += ` ${"*".repeat(n.indent)}
 `;
@@ -9808,7 +9808,7 @@ ${n.content}
           continue;
         }
         if (n.type === "table" && n.indent === 0) {
-          out += `${generateReViewTable(n, logger)}
+          out += `${generateReViewTable(n, logger2)}
 
 `;
           continue;
@@ -9822,7 +9822,7 @@ ${n.nodes[0].raw}
           continue;
         }
         if (n.type === "line" && n.indent !== 0 && n.nodes.length !== 0 && n.nodes[0].type === "quote") {
-          logger.error(`Blockquote inside itemization not supported: ${n.nodes[0].raw}`);
+          logger2.error(`Blockquote inside itemization not supported: ${n.nodes[0].raw}`);
         }
         if (n.type === "line" && n.nodes.length === 1 && n.nodes[0].type === "decoration" && n.nodes[0].rawDecos != "*" && /^\*+$/.test(n.nodes[0].rawDecos)) {
           const boldNode = n.nodes[0];
@@ -9849,47 +9849,47 @@ ${n.nodes[0].formula}
           continue;
         }
         if (n.type === "line") {
-          out += n.nodes.map((n2) => nodeToReView(n2, logger)).join("");
+          out += n.nodes.map((n2) => nodeToReView(n2, logger2)).join("");
           out += "\n\n";
         }
       }
     }
     return out.replaceAll(/\n{2,}/g, "\n\n").replace(/\n*$/, "\n");
   }
-  function generateReViewTable(node, logger) {
+  function generateReViewTable(node, logger2) {
     const headerColumns = node.cells[0];
     if (headerColumns === void 0) {
       return `//emtable[${escapeBlockCommandOption(node.fileName)}]{
 //}`;
     }
-    const headerText = generateReViewTableColumn(headerColumns, logger);
+    const headerText = generateReViewTableColumn(headerColumns, logger2);
     const borderText = "------------";
     return `//emtable[${escapeBlockCommandOption(node.fileName)}]{
 ${headerText}
 ${borderText}
-${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger)).join("\n")}
+${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger2)).join("\n")}
 //}`;
   }
-  function generateReViewTableColumn(column, logger) {
-    return column.map((cell) => cell.map((n) => nodeToReView(n, logger)).join("")).join("	");
+  function generateReViewTableColumn(column, logger2) {
+    return column.map((cell) => cell.map((n) => nodeToReView(n, logger2)).join("")).join("	");
   }
-  function nodeToReView(node, logger) {
+  function nodeToReView(node, logger2) {
     if (node.type === "link") {
       if (node.pathType === "relative") {
-        logger.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
+        logger2.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
         return node.raw;
       }
       if (node.pathType === "root") {
-        logger.warn(`An internal link to a Scrapbox's page is used: ${node.raw}`);
+        logger2.warn(`An internal link to a Scrapbox's page is used: ${node.raw}`);
         const href = new URL(node.href, "https://scrapbox.io").href;
         return `@<href>{${escapeHrefUrl(href)}}`;
       }
       return node.content === "" ? `@<href>{${escapeHrefUrl(node.href)}}` : `@<href>{${escapeHrefUrl(node.href)}, ${escapeHrefUrl(node.content)}}`;
     } else if (node.type === "hashTag") {
-      logger.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
+      logger2.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
       return node.raw;
     } else if (node.type === "strong") {
-      return `@<strong>{${escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger)).join(""))}}`;
+      return `@<strong>{${escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger2)).join(""))}}`;
     } else if (node.type === "decoration") {
       return node.decos.reduce((inside, decoration) => {
         if (/\*-[0-9]*/.test(decoration)) {
@@ -9900,7 +9900,7 @@ ${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger))
           return `@<del>{${inside}}`;
         }
         return inside;
-      }, escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger)).join("")));
+      }, escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger2)).join("")));
     } else if (node.type === "code") {
       return `@<code>{${escapeInlineCommand(node.text)}}`;
     } else if (node.type === "formula") {
@@ -9910,10 +9910,10 @@ ${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger))
     } else if (node.type === "plain") {
       return node.text;
     } else if (node.type === "icon" || node.type === "strongIcon") {
-      logger.warn(`An icon is used: ${node.raw}`);
+      logger2.warn(`An icon is used: ${node.raw}`);
       return `@<icon>{${node.path}.icon}`;
     } else {
-      logger.error(`Unsupported syntax: ${node.raw}`);
+      logger2.error(`Unsupported syntax: ${node.raw}`);
       return node.raw;
     }
   }
@@ -9938,6 +9938,14 @@ ${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger))
  \`sb2re\`\u3092\u4F7F\u7528\u3057\u3066\u3044\u307E\u3059
   [fabon-f/sb2re https://github.com/fabon-f/sb2re]
 `;
+  var logger = {
+    error(message) {
+      throw new Error(message);
+    },
+    warn(message) {
+      console.warn(message);
+    }
+  };
   function App() {
     const { register, watch } = useForm();
     const watchText = watch("text", sampleTxt);
@@ -9972,7 +9980,7 @@ ${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger))
     })), /* @__PURE__ */ react_default.createElement("div", {
       class: "editor_wrapper"
     }, /* @__PURE__ */ react_default.createElement("textarea", {
-      value: executeSb2re(watchText, { baseHeadingLevel: watchBaseLevel }),
+      value: executeSb2re(watchText, { baseHeadingLevel: watchBaseLevel, logger }),
       class: "output"
     }))));
   }
@@ -9982,7 +9990,7 @@ ${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger))
       converted = scrapboxToReView(watchText, option);
     } catch (e) {
       Store.addNotification({
-        title: "Error from sb2re: Please fix your Scrapbox syntax",
+        title: "Please fix your Scrapbox syntax",
         message: e.toString(),
         type: "danger",
         container: "bottom-left",
