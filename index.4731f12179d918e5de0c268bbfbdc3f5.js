@@ -141,16 +141,16 @@
     C2.prototype.forceUpdate = function(a2) {
       this.updater.enqueueForceUpdate(this, a2, "forceUpdate");
     };
-    function D2() {
+    function D3() {
     }
-    D2.prototype = C2.prototype;
+    D3.prototype = C2.prototype;
     function E2(a2, b2, c) {
       this.props = a2;
       this.context = b2;
       this.refs = B3;
       this.updater = c || A;
     }
-    var F3 = E2.prototype = new D2();
+    var F3 = E2.prototype = new D3();
     F3.constructor = E2;
     object_assign_default(F3, C2.prototype);
     F3.isPureReactComponent = true;
@@ -173,7 +173,7 @@
           d2[e] === void 0 && (d2[e] = g[e]);
       return { $$typeof: n, type: a2, key: k2, ref: h2, props: d2, _owner: G3.current };
     }
-    function K2(a2, b2) {
+    function K(a2, b2) {
       return { $$typeof: n, type: a2.type, key: b2, ref: a2.ref, props: a2.props, _owner: a2._owner };
     }
     function L2(a2) {
@@ -212,7 +212,7 @@
       if (h2)
         return h2 = a2, d2 = d2(h2), a2 = e === "" ? "." + N2(h2, 0) : e, Array.isArray(d2) ? (c = "", a2 != null && (c = a2.replace(M3, "$&/") + "/"), O3(d2, b2, c, "", function(a22) {
           return a22;
-        })) : d2 != null && (L2(d2) && (d2 = K2(d2, c + (!d2.key || h2 && h2.key === d2.key ? "" : ("" + d2.key).replace(M3, "$&/") + "/") + a2)), b2.push(d2)), 1;
+        })) : d2 != null && (L2(d2) && (d2 = K(d2, c + (!d2.key || h2 && h2.key === d2.key ? "" : ("" + d2.key).replace(M3, "$&/") + "/") + a2)), b2.push(d2)), 1;
       h2 = 0;
       e = e === "" ? "." : e + ":";
       if (Array.isArray(a2))
@@ -462,20 +462,20 @@
         typeof window.requestAnimationFrame !== "function" && console.error("This browser doesn't support requestAnimationFrame. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
         typeof z2 !== "function" && console.error("This browser doesn't support cancelAnimationFrame. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
       }
-      var A = false, B3 = null, C2 = -1, D2 = 5, E2 = 0;
+      var A = false, B3 = null, C2 = -1, D3 = 5, E2 = 0;
       exports.unstable_shouldYield = function() {
         return exports.unstable_now() >= E2;
       };
       k2 = function() {
       };
       exports.unstable_forceFrameRate = function(a2) {
-        0 > a2 || 125 < a2 ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : D2 = 0 < a2 ? Math.floor(1e3 / a2) : 5;
+        0 > a2 || 125 < a2 ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : D3 = 0 < a2 ? Math.floor(1e3 / a2) : 5;
       };
       var F3 = new MessageChannel(), G3 = F3.port2;
       F3.port1.onmessage = function() {
         if (B3 !== null) {
           var a2 = exports.unstable_now();
-          E2 = a2 + D2;
+          E2 = a2 + D3;
           try {
             B3(true, a2) ? G3.postMessage(null) : (A = false, B3 = null);
           } catch (b2) {
@@ -514,7 +514,7 @@
       a2 = a2[0];
       return a2 === void 0 ? null : a2;
     }
-    function K2(a2) {
+    function K(a2) {
       var b2 = a2[0];
       if (b2 !== void 0) {
         var c = a2.pop();
@@ -543,9 +543,9 @@
     function T3(a2) {
       for (var b2 = J(M3); b2 !== null; ) {
         if (b2.callback === null)
-          K2(M3);
+          K(M3);
         else if (b2.startTime <= a2)
-          K2(M3), b2.sortIndex = b2.expirationTime, H3(L2, b2);
+          K(M3), b2.sortIndex = b2.expirationTime, H3(L2, b2);
         else
           break;
         b2 = J(M3);
@@ -576,10 +576,10 @@
             P3 = O3.priorityLevel;
             var e = d2(O3.expirationTime <= b2);
             b2 = exports.unstable_now();
-            typeof e === "function" ? O3.callback = e : O3 === J(L2) && K2(L2);
+            typeof e === "function" ? O3.callback = e : O3 === J(L2) && K(L2);
             T3(b2);
           } else
-            K2(L2);
+            K(L2);
           O3 = J(L2);
         }
         if (O3 !== null)
@@ -2775,7 +2775,7 @@
               J = Fe;
             else {
               J = De;
-              var K2 = Ce;
+              var K = Ce;
             }
           else
             (k22 = h22.nodeName) && k22.toLowerCase() === "input" && (h22.type === "checkbox" || h22.type === "radio") && (J = Ee);
@@ -2783,14 +2783,14 @@
             ne(g2, J, c, e2);
             break a;
           }
-          K2 && K2(a2, h22, d22);
-          a2 === "focusout" && (K2 = h22._wrapperState) && K2.controlled && h22.type === "number" && bb(h22, "number", h22.value);
+          K && K(a2, h22, d22);
+          a2 === "focusout" && (K = h22._wrapperState) && K.controlled && h22.type === "number" && bb(h22, "number", h22.value);
         }
-        K2 = d22 ? ue(d22) : window;
+        K = d22 ? ue(d22) : window;
         switch (a2) {
           case "focusin":
-            if (me(K2) || K2.contentEditable === "true")
-              Qe = K2, Re = d22, Se = null;
+            if (me(K) || K.contentEditable === "true")
+              Qe = K, Re = d22, Se = null;
             break;
           case "focusout":
             Se = Re = Qe = null;
@@ -2829,7 +2829,7 @@
           }
         else
           ie ? ge(a2, c) && (L2 = "onCompositionEnd") : a2 === "keydown" && c.keyCode === 229 && (L2 = "onCompositionStart");
-        L2 && (de && c.locale !== "ko" && (ie || L2 !== "onCompositionStart" ? L2 === "onCompositionEnd" && ie && (Q2 = nd()) : (kd = e2, ld = "value" in kd ? kd.value : kd.textContent, ie = true)), K2 = oe(d22, L2), 0 < K2.length && (L2 = new Ld(L2, a2, null, c, e2), g2.push({ event: L2, listeners: K2 }), Q2 ? L2.data = Q2 : (Q2 = he(c), Q2 !== null && (L2.data = Q2))));
+        L2 && (de && c.locale !== "ko" && (ie || L2 !== "onCompositionStart" ? L2 === "onCompositionEnd" && ie && (Q2 = nd()) : (kd = e2, ld = "value" in kd ? kd.value : kd.textContent, ie = true)), K = oe(d22, L2), 0 < K.length && (L2 = new Ld(L2, a2, null, c, e2), g2.push({ event: L2, listeners: K }), Q2 ? L2.data = Q2 : (Q2 = he(c), Q2 !== null && (L2.data = Q2))));
         if (Q2 = ce ? je(a2, c) : ke(a2, c))
           d22 = oe(d22, "onBeforeInput"), 0 < d22.length && (e2 = new Ld("onBeforeInput", "beforeinput", null, c, e2), g2.push({ event: e2, listeners: d22 }), e2.data = Q2);
       }
@@ -5902,8 +5902,8 @@
                 break a;
               case 1:
                 f = k2;
-                var K2 = p.type, Q2 = p.stateNode;
-                if ((p.flags & 64) === 0 && (typeof K2.getDerivedStateFromError === "function" || Q2 !== null && typeof Q2.componentDidCatch === "function" && (Ti === null || !Ti.has(Q2)))) {
+                var K = p.type, Q2 = p.stateNode;
+                if ((p.flags & 64) === 0 && (typeof K.getDerivedStateFromError === "function" || Q2 !== null && typeof Q2.componentDidCatch === "function" && (Ti === null || !Ti.has(Q2)))) {
                   p.flags |= 4096;
                   b2 &= -b2;
                   p.lanes |= b2;
@@ -6175,9 +6175,9 @@
       do
         try {
           for (t = a2; Z !== null; ) {
-            var K2 = Z.flags;
-            K2 & 36 && Yi(t, Z.alternate, Z);
-            if (K2 & 128) {
+            var K = Z.flags;
+            K & 36 && Yi(t, Z.alternate, Z);
+            if (K & 128) {
               q2 = void 0;
               var Q2 = Z.ref;
               if (Q2 !== null) {
@@ -6210,7 +6210,7 @@
       xj = false, yj = a2, zj = b2;
     else
       for (Z = d2; Z !== null; )
-        b2 = Z.nextEffect, Z.nextEffect = null, Z.flags & 8 && (K2 = Z, K2.sibling = null, K2.stateNode = null), Z = b2;
+        b2 = Z.nextEffect, Z.nextEffect = null, Z.flags & 8 && (K = Z, K.sibling = null, K.stateNode = null), Z = b2;
     d2 = a2.pendingLanes;
     d2 === 0 && (Ti = null);
     d2 === 1 ? a2 === Ej ? Dj++ : (Dj = 0, Ej = a2) : Dj = 0;
@@ -7125,7 +7125,7 @@
         };
         var o = {};
         return (() => {
-          i.r(o), i.d(o, { ReactNotifications: () => D2, Store: () => k2 });
+          i.r(o), i.d(o, { ReactNotifications: () => D3, Store: () => k2 });
           var t2, n2, e2, r, a2 = i(359), c = i.n(a2), s2 = true, u = 768, f = 325, l = "rnc__notification-item";
           !function(t3) {
             t3.BOTTOM_LEFT = "bottom-left", t3.BOTTOM_RIGHT = "bottom-right", t3.BOTTOM_CENTER = "bottom-center", t3.TOP_LEFT = "top-left", t3.TOP_RIGHT = "top-right", t3.TOP_CENTER = "top-center", t3.CENTER = "center", t3.TOP_FULL = "top-full", t3.BOTTOM_FULL = "bottom-full";
@@ -7546,7 +7546,7 @@
               return t4.__proto__ || Object.getPrototypeOf(t4);
             }, W3(t3);
           }
-          var D2 = function(n3) {
+          var D3 = function(n3) {
             !function(t3, n4) {
               if (typeof n4 != "function" && n4 !== null)
                 throw new TypeError("Super expression must either be null or a function");
@@ -7625,7 +7625,7 @@
   var ReactNotifications = dist.ReactNotifications;
   var Store = dist.Store;
 
-  // deno:https://cdn.skypack.dev/-/react-hook-form@v7.32.2-C2MIHoyzmYzKeu12K8Tb/dist=es2019,mode=imports/optimized/react-hook-form.js
+  // deno:https://cdn.skypack.dev/-/react-hook-form@v7.33.1-5ZoGKEQobMzA3wEwuhDj/dist=es2019,mode=imports/optimized/react-hook-form.js
   var isCheckBoxInput = (element) => element.type === "checkbox";
   var isDateObject = (value) => value instanceof Date;
   var isNullOrUndefined = (value) => value == null;
@@ -8799,7 +8799,8 @@
     const setFocus = (name, options = {}) => {
       const field = get(_fields, name)._f;
       const fieldRef = field.refs ? field.refs[0] : field.ref;
-      options.shouldSelect ? fieldRef.select() : fieldRef.focus();
+      fieldRef.focus();
+      options.shouldSelect && fieldRef.select();
     };
     return {
       control: {
@@ -8918,18 +8919,18 @@
     return _formControl.current;
   }
 
-  // deno:https://esm.sh/@progfay/scrapbox-parser@7.2.0
-  var scrapbox_parser_7_2_exports = {};
-  __export(scrapbox_parser_7_2_exports, {
-    convertToBlock: () => x,
-    getTitle: () => Me2,
+  // deno:https://esm.sh/@progfay/scrapbox-parser@8.0.0
+  var scrapbox_parser_8_0_exports = {};
+  __export(scrapbox_parser_8_0_exports, {
+    convertToBlock: () => h,
+    getTitle: () => je2,
     packRows: () => P2,
-    parse: () => He2,
-    parseToRows: () => v
+    parse: () => qe2,
+    parseToRows: () => b
   });
 
-  // deno:https://esm.sh/v86/@progfay/scrapbox-parser@7.2.0/deno/scrapbox-parser.js
-  var b = (e) => ({ type: "title", text: e.rows[0].text });
+  // deno:https://esm.sh/v87/@progfay/scrapbox-parser@8.0.0/deno/scrapbox-parser.js
+  var v = (e) => ({ type: "title", text: e.rows[0].text });
   var y2 = (e) => {
     let { rows: [t, ...o] } = e, { indent: r = 0, text: n = "" } = t ?? {}, c = n.replace(/^\s*code:/, "");
     return { indent: r, type: "codeBlock", fileName: c, content: o.map((i) => i.text.substring(r + 1)).join(`
@@ -8941,34 +8942,34 @@
       return (p = i?.()) !== null && p !== void 0 ? p : [];
     if (!o && c.quoted)
       return (l = i?.()) !== null && l !== void 0 ? l : [];
-    for (let D2 of r) {
-      let g = D2.exec(n);
+    for (let Z2 of r) {
+      let g = Z2.exec(n);
       if (g === null)
         continue;
-      let Z2 = n.substring(0, g.index), A = n.substring(g.index + ((u = (m = g[0]) === null || m === void 0 ? void 0 : m.length) !== null && u !== void 0 ? u : 0)), J = e((f = g[0]) !== null && f !== void 0 ? f : "", c);
-      return [...d(Z2, c), ...J, ...d(A, c)];
+      let A = n.substring(0, g.index), J = n.substring(g.index + ((u = (m = g[0]) === null || m === void 0 ? void 0 : m.length) !== null && u !== void 0 ? u : 0)), K = e((f = g[0]) !== null && f !== void 0 ? f : "", c);
+      return [...d(A, c), ...K, ...d(J, c)];
     }
     return (N2 = i?.()) !== null && N2 !== void 0 ? N2 : [];
   };
   var a = (e) => [{ type: "plain", raw: e, text: e }];
   var T2 = s(a, { parseOnNested: true, parseOnQuoted: true, patterns: [/^()(.*)()$/] });
-  var K = /^>.*$/;
-  var V2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "quote", raw: e, nodes: d(e.substring(1), { ...t, quoted: true }) }];
-  var O2 = s(V2, { parseOnNested: false, parseOnQuoted: false, patterns: [K] });
-  var X2 = /^\? .+$/;
-  var Y2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "helpfeel", raw: e, text: e.substring(2) }];
-  var I2 = s(Y2, { parseOnNested: false, parseOnQuoted: false, patterns: [X2] });
-  var w = /\[\[https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)\]\]/i;
-  var ee2 = /\[\[https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}\]\]/;
-  var te2 = (e, t) => {
+  var V2 = /^>.*$/;
+  var X2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "quote", raw: e, nodes: d(e.substring(1), { ...t, quoted: true }) }];
+  var O2 = s(X2, { parseOnNested: false, parseOnQuoted: false, patterns: [V2] });
+  var Y2 = /^\? .+$/;
+  var w = (e, t) => t.context === "table" ? a(e, t) : [{ type: "helpfeel", raw: e, text: e.substring(2) }];
+  var I2 = s(w, { parseOnNested: false, parseOnQuoted: false, patterns: [Y2] });
+  var ee2 = /\[\[https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)\]\]/i;
+  var te2 = /\[\[https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}\]\]/;
+  var oe2 = (e, t) => {
     if (t.context === "table")
       return a(e, t);
     let o = e.substring(2, e.length - 2), r = /^https?:\/\/([0-9a-z-]\.)?gyazo\.com\/[0-9a-f]{32}$/.test(o);
     return [{ type: "strongImage", raw: e, src: r ? `${o}/thumb/1000` : o }];
   };
-  var R2 = s(te2, { parseOnNested: false, parseOnQuoted: true, patterns: [w, ee2] });
-  var oe2 = /\[[^[\]]*\.icon(?:\*[1-9]\d*)?\]/;
-  function h(e) {
+  var R2 = s(oe2, { parseOnNested: false, parseOnQuoted: true, patterns: [ee2, te2] });
+  var re2 = /\[[^[\]]*\.icon(?:\*[1-9]\d*)?\]/;
+  function x(e) {
     return (t, o) => {
       if (e === "strongIcon" && o.context === "table")
         return a(t, o);
@@ -8976,20 +8977,20 @@
       return new Array(l).fill({}).map(() => ({ path: c, pathType: i, type: e, raw: t }));
     };
   }
-  var re2 = h("icon");
-  var E = s(re2, { parseOnNested: false, parseOnQuoted: true, patterns: [oe2] });
-  var ne2 = /\[\[[^[\]]*\.icon(?:\*\d+)?\]\]/;
-  var se2 = h("strongIcon");
-  var k = s(se2, { parseOnNested: false, parseOnQuoted: true, patterns: [ne2] });
-  var ae2 = /\[\[(?:[^[]|\[[^[]).*?\]*\]\]/;
-  var ce2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "strong", raw: e, nodes: d(e.substring(2, e.length - 2), { ...t, nested: true }) }];
-  var $ = s(ce2, { parseOnNested: false, parseOnQuoted: true, patterns: [ae2] });
-  var ie2 = /\[\$ .+? \]/;
-  var de2 = /\[\$ [^\]]+\]/;
-  var pe2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "formula", raw: e, formula: e.substring(3, e.length - (e.endsWith(" ]") ? 2 : 1)) }];
-  var S2 = s(pe2, { parseOnNested: false, parseOnQuoted: true, patterns: [ie2, de2] });
-  var le2 = /\[[!"#%&'()*+,\-./{|}<>_~]+ (?:\[[^[\]]+\]|[^\]])+\]/;
-  var me2 = (e, t) => {
+  var ne2 = x("icon");
+  var E = s(ne2, { parseOnNested: false, parseOnQuoted: true, patterns: [re2] });
+  var se2 = /\[\[[^[\]]*\.icon(?:\*\d+)?\]\]/;
+  var ae2 = x("strongIcon");
+  var k = s(ae2, { parseOnNested: false, parseOnQuoted: true, patterns: [se2] });
+  var ce2 = /\[\[(?:[^[]|\[[^[]).*?\]*\]\]/;
+  var ie2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "strong", raw: e, nodes: d(e.substring(2, e.length - 2), { ...t, nested: true }) }];
+  var $ = s(ie2, { parseOnNested: false, parseOnQuoted: true, patterns: [ce2] });
+  var de2 = /\[\$ .+? \]/;
+  var pe2 = /\[\$ [^\]]+\]/;
+  var le2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "formula", raw: e, formula: e.substring(3, e.length - (e.endsWith(" ]") ? 2 : 1)) }];
+  var S2 = s(le2, { parseOnNested: false, parseOnQuoted: true, patterns: [de2, pe2] });
+  var me2 = /\[[!"#%&'()*+,\-./{|}<>_~]+ (?:\[[^[\]]+\]|[^\]])+\]/;
+  var ue2 = (e, t) => {
     if (t.context === "table")
       return a(e, t);
     let o = e.indexOf(" "), r = e.substring(1, o), n = e.substring(o + 1, e.length - 1), c = new Set(r);
@@ -8999,40 +9000,40 @@
     }
     return [{ type: "decoration", raw: e, rawDecos: r, decos: Array.from(c), nodes: d(n, { ...t, nested: true }) }];
   };
-  var z = s(me2, { parseOnNested: false, parseOnQuoted: true, patterns: [le2] });
-  var ue2 = /`.*?`/;
-  var ge2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "code", raw: e, text: e.substring(1, e.length - 1) }];
-  var Q = s(ge2, { parseOnNested: false, parseOnQuoted: true, patterns: [ue2] });
-  var fe2 = /^[$%] .+$/;
-  var Ne2 = (e, t) => {
+  var z = s(ue2, { parseOnNested: false, parseOnQuoted: true, patterns: [me2] });
+  var ge2 = /`.*?`/;
+  var fe2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "code", raw: e, text: e.substring(1, e.length - 1) }];
+  var Q = s(fe2, { parseOnNested: false, parseOnQuoted: true, patterns: [ge2] });
+  var Ne2 = /^[$%] .+$/;
+  var xe = (e, t) => {
     var o;
     if (t.context === "table")
       return a(e, t);
     let r = (o = e[0]) !== null && o !== void 0 ? o : "", n = e.substring(2);
     return [{ type: "commandLine", raw: e, symbol: r, text: n }];
   };
-  var _ = s(Ne2, { parseOnNested: false, parseOnQuoted: false, patterns: [fe2] });
+  var L = s(xe, { parseOnNested: false, parseOnQuoted: false, patterns: [Ne2] });
   var he2 = /\[\s+\]/;
-  var xe = (e, t) => t.context === "table" ? a(e, t) : [{ type: "blank", raw: e, text: e.substring(1, e.length - 1) }];
-  var F2 = s(xe, { parseOnNested: false, parseOnQuoted: true, patterns: [he2] });
-  var ve2 = /\[https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)(?:\?[^\]\s]+)?(?:\s+https?:\/\/[^\s\]]+)?\]/i;
-  var Pe2 = /\[https?:\/\/[^\s\]]+\s+https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)(?:\?[^\]\s]+)?\]/i;
-  var be2 = /\[https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}(?:\/raw)?(?:\s+https?:\/\/[^\s\]]+)?\]/;
-  var ye = /\[https?:\/\/[^\s\]]+\s+https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}(?:\/raw)?\]/;
-  var Te2 = (e) => /^https?:\/\/[^\s\]]+\.(png|jpe?g|gif|svg)(\?[^\]\s]+)?$/i.test(e) || Oe2(e);
-  var Oe2 = (e) => /^https?:\/\/([0-9a-z-]\.)?gyazo\.com\/[0-9a-f]{32}(\/raw)?$/.test(e);
-  var Ie2 = (e, t) => {
+  var be2 = (e, t) => t.context === "table" ? a(e, t) : [{ type: "blank", raw: e, text: e.substring(1, e.length - 1) }];
+  var _ = s(be2, { parseOnNested: false, parseOnQuoted: true, patterns: [he2] });
+  var Pe2 = /\[https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)(?:\?[^\]\s]+)?(?:\s+https?:\/\/[^\s\]]+)?\]/i;
+  var ve2 = /\[https?:\/\/[^\s\]]+\s+https?:\/\/[^\s\]]+\.(?:png|jpe?g|gif|svg)(?:\?[^\]\s]+)?\]/i;
+  var ye = /\[https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}(?:\/raw)?(?:\s+https?:\/\/[^\s\]]+)?\]/;
+  var Te2 = /\[https?:\/\/[^\s\]]+\s+https?:\/\/(?:[0-9a-z-]+\.)?gyazo\.com\/[0-9a-f]{32}(?:\/raw)?\]/;
+  var Oe2 = (e) => /^https?:\/\/[^\s\]]+\.(png|jpe?g|gif|svg)(\?[^\]\s]+)?$/i.test(e) || Ie2(e);
+  var Ie2 = (e) => /^https?:\/\/([0-9a-z-]\.)?gyazo\.com\/[0-9a-f]{32}(\/raw)?$/.test(e);
+  var Re2 = (e, t) => {
     if (t.context === "table")
       return a(e, t);
-    let o = e.search(/\s/), r = o !== -1 ? e.substring(1, o) : e.substring(1, e.length - 1), n = o !== -1 ? e.substring(o, e.length - 1).trimLeft() : "", [c, i] = Te2(n) ? [n, r] : [r, n];
+    let o = e.search(/\s/), r = o !== -1 ? e.substring(1, o) : e.substring(1, e.length - 1), n = o !== -1 ? e.substring(o, e.length - 1).trimLeft() : "", [c, i] = Oe2(n) ? [n, r] : [r, n];
     return [{ type: "image", raw: e, src: /^https?:\/\/([0-9a-z-]\.)?gyazo\.com\/[0-9a-f]{32}$/.test(c) ? `${c}/thumb/1000` : c, link: i }];
   };
-  var C = s(Ie2, { parseOnNested: true, parseOnQuoted: true, patterns: [ve2, Pe2, be2, ye] });
-  var Re2 = /\[https?:\/\/[^\s\]]+\s+[^\]]*[^\s]\]/;
-  var Ee2 = /\[[^[\]]*[^\s]\s+https?:\/\/[^\s\]]+\]/;
-  var ke2 = /\[https?:\/\/[^\s\]]+\]/;
-  var $e2 = /https?:\/\/[^\s]+/;
-  var Se2 = (e, t) => {
+  var F2 = s(Re2, { parseOnNested: true, parseOnQuoted: true, patterns: [Pe2, ve2, ye, Te2] });
+  var Ee2 = /\[https?:\/\/[^\s\]]+\s+[^\]]*[^\s]\]/;
+  var ke2 = /\[[^[\]]*[^\s]\s+https?:\/\/[^\s\]]+\]/;
+  var $e2 = /\[https?:\/\/[^\s\]]+\]/;
+  var Se2 = /https?:\/\/[^\s]+/;
+  var ze = (e, t) => {
     if (t.context === "table")
       return a(e, t);
     let o = e.startsWith("[") && e.endsWith("]") ? e.substring(1, e.length - 1) : e, r = /^https?:\/\/[^\s\]]/.test(o), n = (r ? /^https?:\/\/[^\s\]]+/ : /https?:\/\/[^\s\]]+$/).exec(o);
@@ -9041,24 +9042,24 @@
     let c = r ? o.substring(n[0].length) : o.substring(0, n.index - 1);
     return [{ type: "link", raw: e, pathType: "absolute", href: n[0], content: c.trim() }];
   };
-  var L = s(Se2, { parseOnNested: true, parseOnQuoted: true, patterns: [Re2, Ee2, ke2, $e2] });
+  var C = s(ze, { parseOnNested: true, parseOnQuoted: true, patterns: [Ee2, ke2, $e2, Se2] });
   var W2 = /\[([^\]]*[^\s])\s+([NS]\d+(?:\.\d+)?,[EW]\d+(?:\.\d+)?(?:,Z\d+)?)\]/;
   var B2 = /\[([NS]\d+(?:\.\d+)?,[EW]\d+(?:\.\d+)?(?:,Z\d+)?)(?:\s+([^\]]*[^\s]))?\]/;
-  var ze = (e) => {
+  var Qe2 = (e) => {
     let [t = "", o = "", r = ""] = e.split(","), n = parseFloat(t.replace(/^N/, "").replace(/^S/, "-")), c = parseFloat(o.replace(/^E/, "").replace(/^W/, "-")), i = /^Z\d+$/.test(r) ? parseInt(r.replace(/^Z/, ""), 10) : 14;
     return { latitude: n, longitude: c, zoom: i };
   };
-  var Qe2 = (e, t) => {
+  var Le2 = (e, t) => {
     var o;
     if (t.context === "table")
       return a(e, t);
     let r = (o = e.match(W2)) !== null && o !== void 0 ? o : e.match(B2);
     if (r === null)
       return [];
-    let n = e.startsWith("[N") || e.startsWith("[S"), [, c = "", i = ""] = n ? r : [r[0], r[2], r[1]], { latitude: p, longitude: l, zoom: m } = ze(c), u = i !== "" ? `https://www.google.com/maps/place/${encodeURIComponent(i)}/@${p},${l},${m}z` : `https://www.google.com/maps/@${p},${l},${m}z`;
+    let n = e.startsWith("[N") || e.startsWith("[S"), [, c = "", i = ""] = n ? r : [r[0], r[2], r[1]], { latitude: p, longitude: l, zoom: m } = Qe2(c), u = i !== "" ? `https://www.google.com/maps/place/${encodeURIComponent(i)}/@${p},${l},${m}z` : `https://www.google.com/maps/@${p},${l},${m}z`;
     return [{ type: "googleMap", raw: e, latitude: p, longitude: l, zoom: m, place: i, url: u }];
   };
-  var G2 = s(Qe2, { parseOnNested: false, parseOnQuoted: true, patterns: [W2, B2] });
+  var G2 = s(Le2, { parseOnNested: false, parseOnQuoted: true, patterns: [W2, B2] });
   var _e = /\[\/?[^[\]]+\]/;
   var Fe2 = (e) => {
     let t = e.substring(1, e.length - 1);
@@ -9066,7 +9067,7 @@
   };
   var H2 = s(Fe2, { parseOnNested: true, parseOnQuoted: true, patterns: [_e] });
   var Ce2 = /(?:^|\s)#\S+/;
-  var Le2 = (e, t) => {
+  var We = (e, t) => {
     if (t.context === "table")
       return a(e, t);
     if (e.startsWith("#"))
@@ -9074,60 +9075,68 @@
     let o = e.substring(0, 1), r = e.substring(1);
     return [...a(o, t), { type: "hashTag", raw: r, href: r.substring(1) }];
   };
-  var M2 = s(Le2, { parseOnNested: true, parseOnQuoted: true, patterns: [Ce2] });
-  var We = (e, t, o) => {
+  var M2 = s(We, { parseOnNested: true, parseOnQuoted: true, patterns: [Ce2] });
+  var Be2 = /^[0-9]+\. .*$/;
+  var Ge2 = (e, t) => {
+    if (t.context === "table")
+      return a(e, t);
+    let o = e.indexOf(" "), r = e.substring(0, o - 1), n = parseInt(r, 10), c = e.substring(o + 1, e.length);
+    return [{ type: "numberList", raw: e, rawNumber: r, number: n, nodes: d(c, { ...t, nested: true }) }];
+  };
+  var U2 = s(Ge2, { parseOnNested: false, parseOnQuoted: false, patterns: [Be2] });
+  var He2 = (e, t, o) => {
     var r;
     return e === "" ? [] : (r = o?.()) !== null && r !== void 0 ? r : [];
   };
-  var Be2 = (...e) => (t, o) => e.reduceRight((r, n) => () => n(t, o, r), () => T2(t, o))();
-  var d = Be2(We, O2, I2, Q, _, S2, F2, z, R2, k, $, C, L, E, G2, H2, M2);
-  var U2 = (e) => {
+  var Me2 = (...e) => (t, o) => e.reduceRight((r, n) => () => n(t, o, r), () => T2(t, o))();
+  var d = Me2(He2, O2, I2, Q, L, S2, _, z, R2, k, $, F2, C, E, G2, H2, M2, U2);
+  var q = (e) => {
     let { rows: [t, ...o] } = e, { indent: r = 0, text: n = "" } = t ?? {}, c = n.replace(/^\s*table:/, "");
     return { indent: r, type: "table", fileName: c, cells: o.map((i) => i.text.substring(r + 1)).map((i) => i.split("	").map((p) => d(p, { nested: false, quoted: false, context: "table" }))) };
   };
-  var q = (e) => {
+  var j = (e) => {
     let { indent: t, text: o } = e.rows[0];
     return { indent: t, type: "line", nodes: d(o.substring(t), { nested: false, quoted: false, context: "line" }) };
   };
-  var x = (e) => {
+  var h = (e) => {
     switch (e.type) {
       case "title":
-        return b(e);
+        return v(e);
       case "codeBlock":
         return y2(e);
       case "table":
-        return U2(e);
-      case "line":
         return q(e);
+      case "line":
+        return j(e);
     }
   };
-  var v = (e) => e.split(`
+  var b = (e) => e.split(`
 `).map((t) => {
     var o, r, n;
     return { indent: (n = (r = (o = /^\s+/.exec(t)) === null || o === void 0 ? void 0 : o[0]) === null || r === void 0 ? void 0 : r.length) !== null && n !== void 0 ? n : 0, text: t };
   });
-  var Ge2 = (e, t) => {
+  var Ue2 = (e, t) => {
     var o, r;
     return (e.type === "codeBlock" || e.type === "table") && t.indent > ((r = (o = e.rows[0]) === null || o === void 0 ? void 0 : o.indent) !== null && r !== void 0 ? r : 0);
   };
-  var j = (e, t) => {
+  var D2 = (e, t) => {
     let o = e[e.length - 1];
-    return o !== void 0 && Ge2(o, t) ? (o.rows.push(t), e) : (e.push({ type: /^\s*code:/.test(t.text) ? "codeBlock" : /^\s*table:/.test(t.text) ? "table" : "line", rows: [t] }), e);
+    return o !== void 0 && Ue2(o, t) ? (o.rows.push(t), e) : (e.push({ type: /^\s*code:/.test(t.text) ? "codeBlock" : /^\s*table:/.test(t.text) ? "table" : "line", rows: [t] }), e);
   };
   var P2 = (e, t) => {
     var o;
     if (!((o = t.hasTitle) !== null && o !== void 0) || o) {
       let [r, ...n] = e;
-      return r === void 0 ? [] : [{ type: "title", rows: [r] }, ...n.reduce(j, [])];
+      return r === void 0 ? [] : [{ type: "title", rows: [r] }, ...n.reduce(D2, [])];
     }
-    return e.reduce(j, []);
+    return e.reduce(D2, []);
   };
-  var He2 = (e, t) => {
+  var qe2 = (e, t) => {
     var o;
-    let r = v(e);
-    return P2(r, { hasTitle: (o = t?.hasTitle) !== null && o !== void 0 ? o : true }).map(x);
+    let r = b(e);
+    return P2(r, { hasTitle: (o = t?.hasTitle) !== null && o !== void 0 ? o : true }).map(h);
   };
-  var Me2 = (e) => {
+  var je2 = (e) => {
     var t, o;
     let r = /^\s*\S.*$/m.exec(e);
     return (o = (t = r?.[0]) === null || t === void 0 ? void 0 : t.trim()) !== null && o !== void 0 ? o : "Untitled";
@@ -9734,6 +9743,14 @@
   // deno:https://raw.githubusercontent.com/fabon-f/sb2re/master/mod.ts
   function generateReView(ast, option = {}) {
     const baseHeadingLevel = option.baseHeadingLevel || 3;
+    const logger = option.logger || {
+      error(message) {
+        console.error(message);
+      },
+      warn(message) {
+        console.warn(message);
+      }
+    };
     let out = "";
     const state = {
       inItemization: false,
@@ -9757,7 +9774,7 @@
             state.inBlockQuote = true;
             out += "//quote{\n";
           }
-          out += `${n.nodes[0].nodes.map(nodeToReView).join("")}
+          out += `${n.nodes[0].nodes.map((n2) => nodeToReView(n2, logger)).join("")}
 `;
           continue;
         }
@@ -9766,16 +9783,16 @@
             state.inItemization = true;
           }
           if (n.type === "line") {
-            const lineContent = n.nodes.map(nodeToReView).join("");
+            const lineContent = n.nodes.map((n2) => nodeToReView(n2, logger)).join("");
             out += ` ${"*".repeat(n.indent)} ${lineContent}
 `;
             continue;
           } else {
             if (n.type === "table") {
-              console.error(`Table inside itemization not supported: ${n.fileName}`);
+              logger.error(`Table inside itemization not supported: ${n.fileName}`);
             }
             if (n.type === "codeBlock") {
-              console.error(`Code block inside itemization not supported: ${n.fileName}`);
+              logger.error(`Code block inside itemization not supported: ${n.fileName}`);
             }
             out += ` ${"*".repeat(n.indent)}
 `;
@@ -9791,7 +9808,7 @@ ${n.content}
           continue;
         }
         if (n.type === "table" && n.indent === 0) {
-          out += `${generateReViewTable(n)}
+          out += `${generateReViewTable(n, logger)}
 
 `;
           continue;
@@ -9805,7 +9822,7 @@ ${n.nodes[0].raw}
           continue;
         }
         if (n.type === "line" && n.indent !== 0 && n.nodes.length !== 0 && n.nodes[0].type === "quote") {
-          console.error(`Blockquote inside itemization not supported: ${n.nodes[0].raw}`);
+          logger.error(`Blockquote inside itemization not supported: ${n.nodes[0].raw}`);
         }
         if (n.type === "line" && n.nodes.length === 1 && n.nodes[0].type === "decoration" && n.nodes[0].rawDecos != "*" && /^\*+$/.test(n.nodes[0].rawDecos)) {
           const boldNode = n.nodes[0];
@@ -9819,7 +9836,7 @@ ${n.nodes[0].raw}
             continue;
           }
         }
-        if (n.type === "line" && n.nodes.length === 1 && n.nodes[0].type === "image") {
+        if (n.type === "line" && n.nodes.length === 1 && (n.nodes[0].type === "image" || n.nodes[0].type === "strongImage")) {
           out += `//indepimage[${escapeBlockCommandOption(n.nodes[0].src)}]
 
 `;
@@ -9832,47 +9849,47 @@ ${n.nodes[0].formula}
           continue;
         }
         if (n.type === "line") {
-          out += n.nodes.map(nodeToReView).join("");
+          out += n.nodes.map((n2) => nodeToReView(n2, logger)).join("");
           out += "\n\n";
         }
       }
     }
     return out.replaceAll(/\n{2,}/g, "\n\n").replace(/\n*$/, "\n");
   }
-  function generateReViewTable(node) {
+  function generateReViewTable(node, logger) {
     const headerColumns = node.cells[0];
     if (headerColumns === void 0) {
       return `//emtable[${escapeBlockCommandOption(node.fileName)}]{
 //}`;
     }
-    const headerText = generateReViewTableColumn(headerColumns);
+    const headerText = generateReViewTableColumn(headerColumns, logger);
     const borderText = "------------";
     return `//emtable[${escapeBlockCommandOption(node.fileName)}]{
 ${headerText}
 ${borderText}
-${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
+${node.cells.slice(1).map((column) => generateReViewTableColumn(column, logger)).join("\n")}
 //}`;
   }
-  function generateReViewTableColumn(column) {
-    return column.map((cell) => cell.map(nodeToReView).join("")).join("	");
+  function generateReViewTableColumn(column, logger) {
+    return column.map((cell) => cell.map((n) => nodeToReView(n, logger)).join("")).join("	");
   }
-  function nodeToReView(node) {
+  function nodeToReView(node, logger) {
     if (node.type === "link") {
       if (node.pathType === "relative") {
-        console.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
+        logger.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
         return node.raw;
       }
       if (node.pathType === "root") {
-        console.info(`An internal link to a Scrapbox's page is used: ${node.raw}`);
+        logger.warn(`An internal link to a Scrapbox's page is used: ${node.raw}`);
         const href = new URL(node.href, "https://scrapbox.io").href;
         return `@<href>{${escapeHrefUrl(href)}}`;
       }
       return node.content === "" ? `@<href>{${escapeHrefUrl(node.href)}}` : `@<href>{${escapeHrefUrl(node.href)}, ${escapeHrefUrl(node.content)}}`;
     } else if (node.type === "hashTag") {
-      console.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
+      logger.error(`Can't convert relative links. Please use absolute links instead: ${node.raw}`);
       return node.raw;
     } else if (node.type === "strong") {
-      return `@<strong>{${escapeInlineCommand(node.nodes.map(nodeToReView).join(""))}}`;
+      return `@<strong>{${escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger)).join(""))}}`;
     } else if (node.type === "decoration") {
       return node.decos.reduce((inside, decoration) => {
         if (/\*-[0-9]*/.test(decoration)) {
@@ -9883,7 +9900,7 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
           return `@<del>{${inside}}`;
         }
         return inside;
-      }, escapeInlineCommand(node.nodes.map(nodeToReView).join("")));
+      }, escapeInlineCommand(node.nodes.map((n) => nodeToReView(n, logger)).join("")));
     } else if (node.type === "code") {
       return `@<code>{${escapeInlineCommand(node.text)}}`;
     } else if (node.type === "formula") {
@@ -9892,7 +9909,11 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
       return `@<icon>{${escapeInlineCommand(node.src)}}`;
     } else if (node.type === "plain") {
       return node.text;
+    } else if (node.type === "icon" || node.type === "strongIcon") {
+      logger.warn(`An icon is used: ${node.raw}`);
+      return `@<icon>{${node.path}.icon}`;
     } else {
+      logger.error(`Unsupported syntax: ${node.raw}`);
       return node.raw;
     }
   }
@@ -9906,7 +9927,7 @@ ${node.cells.slice(1).map(generateReViewTableColumn).join("\n")}
     return option.replaceAll("]", "\\]");
   }
   function scrapboxToReView(src, option = {}) {
-    const ast = scrapbox_parser_7_2_exports.parse(src + "\n", option);
+    const ast = scrapbox_parser_8_0_exports.parse(src + "\n", option);
     return generateReView(ast, option);
   }
 
